@@ -424,7 +424,7 @@ static int pnm_putsint(jas_stream_t *out, int wordsize, int_fast32_t *val)
 static int pnm_putuint(jas_stream_t *out, int wordsize, uint_fast32_t *val)
 {
 	int n;
-	uint_fast32_t tmpval;
+	uint_fast32_t tmpval=0;
 	int c;
 
 	n = (wordsize + 7) / 8;
