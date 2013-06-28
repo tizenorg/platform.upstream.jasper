@@ -11,6 +11,7 @@ Url:            http://www.ece.uvic.ca/~mdadams/jasper/
 Group:          Productivity/Graphics/Convertors
 Source:         %{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
+Source1001: 	jasper.manifest
 BuildRequires:  gcc-c++
 BuildRequires:  libdrm-devel
 BuildRequires:  libjpeg8-devel
@@ -44,6 +45,7 @@ image compression standard Part 1.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 autoreconf -i -f
@@ -64,6 +66,7 @@ ln -s libjasper.so.1.0.0 %{buildroot}%{_libdir}/libjasper-1.701.so.1
 %docs_package
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc COPYRIGHT
 /usr/bin/imgcmp
@@ -71,10 +74,12 @@ ln -s libjasper.so.1.0.0 %{buildroot}%{_libdir}/libjasper-1.701.so.1
 /usr/bin/jasper
 
 %files -n libjasper
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_libdir}/libjasper*.so.*
 
 %files -n libjasper-devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 /usr/include/jasper
 %{_libdir}/libjasper.so
